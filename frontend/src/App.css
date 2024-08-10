@@ -1,0 +1,97 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  
+}
+input{
+  color: black;
+}
+.day {
+  background: url("https://cdn.vectorstock.com/i/500p/81/33/early-morning-cartoon-nature-landscape-sunrise-vector-41328133.jpg") no-repeat center center;
+  background-size: cover;
+  
+}
+
+.night {
+  background: url("https://images.freecreatives.com/wp-content/uploads/2015/10/moon-images-at-night-dowload.jpg") no-repeat center center;
+  background-size: cover;
+
+}
+.weatherDisplayData{
+  margin-top:10%;
+  padding: 20px;
+  margin-left: 15%;
+  width: 70%;
+  height: fit-content;
+  margin-bottom: 10%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.weather-display {
+  position: relative; 
+  z-index: 1;
+  color:#CCCCCC;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}
+
+.forecast {
+  display: flex;
+
+}
+
+.forecast-day {
+  border: 1px solid #ddd;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.forecast-day h3 {
+  margin: 0;
+}
+.counteryName_timeIcon{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.current-weather{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.inputBox{
+
+  width:50%;
+  padding: 8px;
+  border-radius: 10px;
+}
+.buttonSearch{
+ display: flex;
+ align-items: center;
+ gap: 5px;
+ font-size: 20px;
+ padding: 5px;
+ border-radius: 10px;
+ border: none;
+ box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.5);
+ cursor: pointer;
+ transition: box-shadow 0.2s, transform 0.2s;
+}
+.formData{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
