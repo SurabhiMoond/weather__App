@@ -1,9 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { getWeather, getWeatherForcast } from "../../api/url";
 import { Forecast } from "./Forcast";
-import {CloudCogIcon, CloudDrizzleIcon, Haze, HazeIcon, Search, ThermometerSunIcon, Wind, WindIcon} from 'lucide-react'
+import { Search, ThermometerSunIcon, Wind, WindIcon} from 'lucide-react'
 import sunsetImage from "../assets/sunrise.png";
 import sunsetImage2 from "../assets/sunsets.png";
+import sunny from '../assets/sun.png'
+import mist from '../assets/mist.png'
+import cloud from '../assets/cloud.png'
+import drizzle from '../assets/drizzle.png'
 export const WeatherDisplay = () => {
   const [input, setInput] = useState("");
   const [weatherData, setWeatherData] = useState(null);
@@ -46,51 +50,55 @@ export const WeatherDisplay = () => {
   return (
     <div className="weatherDisplayData">
       {err && <div className="error-message">Error: {err}</div>}
-      <div >
+      <div>
         <form onSubmit={handleInputSubmit} className="formData">
-        <input type="text" ref={ref} value={input} onChange={(e) => setInput(e.target.value)} placeholder="Search city name here...." required className="inputBox" />
-        <button type="submit" className="buttonSearch"
-         onMouseDown={(e) => {
-              e.currentTarget.style.transform = "scale(0.90)";
-              e.currentTarget.style.boxShadow = "0px 2px 4px rgba(0, 0, 0, 0.3)"; // Decrease shadow
-            }}
-         onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "scale(1)"; // Restore on leave
-              e.currentTarget.style.boxShadow = "0px 5px 8px rgba(0, 0, 0, 0.5)"; // Restore shadow on leave
-            }}
-          >
-          <Search absoluteStrokeWidth /> Search
+          <input
+            type="text"
+            ref={ref}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Search city name here...."
+            required
+            className="inputBox"
+          />
+          <button type="submit" className="buttonSearch">
+            <Search absoluteStrokeWidth width={"20px"} /> Search
           </button>
         </form>
       </div>
       {weatherData && (
-        <div>
+        <div className="weatherDisplayCards">
           <div className="counteryName_timeIcon">
             <div>
               <h3>
-                {weatherData.name || "City not found"},{" "}
-                {weatherData.sys?.country}
+                {weatherData.name || "City not found"} {"  "}
+                {weatherData.sys?.country === "IN" && <span>India</span>}
               </h3>
-              {weatherData.weather[0].main === "Clouds" && <CloudCogIcon />}
+              {(weatherData.weather[0].main === "Sunny" || weatherData.weather[0].main === "Clear") && <img src={sunny} width={'60px'}/>}
+              {weatherData.weather[0].main === "Clouds" && <img src={cloud} width={'60px'} />}
               {weatherData.weather[0].main === "Drizzle" && (
-                <CloudDrizzleIcon color="#fafafa" absoluteStrokeWidth />
+                <img src={drizzle} width={'60px'}/>
               )}
-              {weatherData.weather[0].main === "Mist" && (
-                <HazeIcon color="#fafafa" absoluteStrokeWidth />
+              {(weatherData.weather[0].main === "Mist" ||
+                weatherData.weather[0].main === "Haze") && (
+                <img src={mist} width={"60px"} />
               )}
             </div>
             <div style={{ lineHeight: "0px" }}>
               <p>
-                Sunrise:{" "}
+                {" "}
+                Sunrise :{" "}
                 {weatherData.sys?.sunrise &&
                   formatTime(weatherData.sys.sunrise)}
                 &nbsp;
-                <img src={sunsetImage} width={"4%"} />
+                <img src={sunsetImage} width={"15%"} />
               </p>
               <p>
-                Sunset:{weatherData.sys?.sunset && formatTime(weatherData.sys.sunset)}
+                {" "}
+                Sunset :{" "}
+                {weatherData.sys?.sunset && formatTime(weatherData.sys.sunset)}
                 &nbsp;
-                <img src={sunsetImage2} width={"4%"} />
+                <img src={sunsetImage2} width={"15%"} />
               </p>
             </div>
           </div>
@@ -98,14 +106,14 @@ export const WeatherDisplay = () => {
             <div className="weatherDetail">
               <p> Weather : {weatherData.weather[0].description}</p>
               <p>Humidity : {weatherData.main.humidity}%</p>
-            </div>
-            <div className="weatherIcon">
-              <p>
-                <ThermometerSunIcon color="#fafafa" absoluteStrokeWidth /> :{weatherData.main.temp}°C
-              </p>
               <p>Feels Like : {weatherData.main.feels_like}°C</p>
               <p>
-                <WindIcon color="#fafafa" absoluteStrokeWidth />:{weatherData.wind.speed} km/h{" "}
+                <ThermometerSunIcon color="#fafafa" absoluteStrokeWidth /> :
+                {weatherData.main.temp}°C
+              </p>
+              <p>
+                <WindIcon color="#fafafa" absoluteStrokeWidth />:
+                {weatherData.wind.speed} km/h
               </p>
             </div>
           </div>

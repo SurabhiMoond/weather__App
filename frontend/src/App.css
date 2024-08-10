@@ -1,6 +1,7 @@
 html, body {
-  height: 100%;
+  height: auto;
   margin: 0;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .background {
@@ -12,28 +13,27 @@ html, body {
   z-index: -1;
   
 }
-input{
-  color: black;
-}
+
 .day {
-  background: url("https://cdn.vectorstock.com/i/500p/81/33/early-morning-cartoon-nature-landscape-sunrise-vector-41328133.jpg") no-repeat center center;
-  background-size: cover;
+background: linear-gradient(to top, #171c32, #0e6695,#CCCCCC);
   
 }
-
 .night {
-  background: url("https://images.freecreatives.com/wp-content/uploads/2015/10/moon-images-at-night-dowload.jpg") no-repeat center center;
-  background-size: cover;
-
+background-color: #171c32;
 }
 .weatherDisplayData{
+  border-radius: 20px;
   margin-top:10%;
   padding: 20px;
   margin-left: 15%;
   width: 70%;
   height: fit-content;
   margin-bottom: 10%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(39, 42, 43, 0.2);
+   box-shadow: rgb(10, 10, 218) 0px 50px 100px -20px, rgb(51, 255, 0) 0px 30px 60px -30px, rgba(3, 255, 112, 0.35) 0px -2px 6px 0px inset;
+}
+.weatherDetail{
+  font-size: 1.4rem;
 }
 .weather-display {
   position: relative; 
@@ -48,50 +48,107 @@ input{
 
 .forecast {
   display: flex;
-
+  gap : 5px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .forecast-day {
-  border: 1px solid #ddd;
+  box-shadow: rgb(10, 10, 218) 0px 50px 100px -20px, rgb(51, 255, 0) 0px 30px 60px -30px, rgba(3, 255, 112, 0.35) 0px -2px 6px 0px inset;
   margin: 10px 0;
   padding: 10px;
+  border-radius: 20px;
+  text-align: center;
 }
 
 .forecast-day h3 {
   margin: 0;
 }
 .counteryName_timeIcon{
+  width: 300px;
+  border-radius: 20px;
+  height: 290px;
+text-align: center;
+ box-shadow: rgb(10, 10, 218) 0px 50px 100px -20px, rgb(51, 255, 0) 0px 30px 60px -30px, rgba(3, 255, 112, 0.35) 0px -2px 6px 0px inset;
+  font-size: 1.2rem;
+padding: 10px;
+
+}
+.current-weather{
+  height: 300px;
+  width: 400px;
+  border-radius: 20px;
+ box-shadow: rgb(10, 10, 218) 0px 50px 100px -20px, rgb(51, 255, 0) 0px 30px 60px -30px, rgba(3, 255, 112, 0.35) 0px -2px 6px 0px inset;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+.inputBox{
+  width: 400px;
+  border: 5px solid rgb(255, 255, 255);
+  padding: 12px 10px  12px 30px;
+  font-size: 20px;
+ border-radius: 100px;
+  background-color: rgb(232, 234, 235);
+}
+.buttonSearch{
+  border: 2px solid rgb(255, 252, 252);
+  background-color: #568aa6;
+ margin-left: -115px;
+ display: flex;
+ align-items: center;
+ gap: 3px;
+ font-size: 18px;
+ padding: 13px;
+ padding-left: 15px;
+ padding-right: 15px ;
+ border-radius: 100px;
+ border: none;
+ cursor: pointer;
+}
+.buttonSearch:hover{
+background-color: rgb(217, 231, 240);
+color:rgb(3, 108, 173) ;
+}
+.formData{
+  overflow:auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.weatherDisplayCards{
+  margin-top: 5%;
   display: flex;
   gap: 20px;
   align-items: center;
   justify-content: center;
 }
-.current-weather{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-.inputBox{
-
-  width:50%;
-  padding: 8px;
-  border-radius: 10px;
-}
-.buttonSearch{
- display: flex;
- align-items: center;
- gap: 5px;
- font-size: 20px;
- padding: 5px;
- border-radius: 10px;
- border: none;
- box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.5);
- cursor: pointer;
- transition: box-shadow 0.2s, transform 0.2s;
-}
-.formData{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@media (max-width: 768px) {
+  .counteryName_timeIcon{
+    display: flex;
+    height: max-content;
+    width: 80%;
+  }
+  .weatherDisplayCards{
+    display: flex;
+    flex-direction: column;
+  }
+  .current-weather{
+  height: 300px;
+  width: 300px;
+  }
+  .forecast {
+  overflow:scroll;}
+  body{
+    overflow-x: hidden; 
+  }
+  .background{
+    margin-top: 0;
+    position: relative;
+  }
+  .inputBox{
+    width: 200px;
+  }
 }
