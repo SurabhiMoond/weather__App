@@ -47,8 +47,10 @@ input{
 }
 
 .forecast {
+  overflow:scroll;
   display: flex;
-
+  gap : 5px;
+  width: 100%;
 }
 
 .forecast-day {
@@ -91,6 +93,7 @@ input{
  transition: box-shadow 0.2s, transform 0.2s;
 }
 .formData{
+  overflow:auto;
   display: flex;
   align-items: center;
   justify-content: center;
