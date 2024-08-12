@@ -1,8 +1,8 @@
 import React from "react";
-import cloud from '../assets/cloud.png'
-import sunny from '../assets/sun.png'
-import mist from '../assets/mist.png'
-import fog from '../assets/fogg.png'
+import cloud from "../assets/cloud.png";
+import sunny from "../assets/sun.png";
+import mist from "../assets/mist.png";
+import fog from "../assets/fogg.png";
 export const Forecast = ({ data }) => {
   if (!data || !data.list) return null;
   const dailyForecasts = data.list.reduce((acc, curr) => {
@@ -16,7 +16,7 @@ export const Forecast = ({ data }) => {
 
   return (
     <div>
-      <h2>Forecast</h2>
+      <h2 style={{ textAlign: "center" }}>Forecast</h2>
       <div className="forecast">
         {Object.keys(dailyForecasts).map((date, index) => {
           const dailyData = dailyForecasts[date];
@@ -29,13 +29,30 @@ export const Forecast = ({ data }) => {
 
           return (
             <div key={index} className="forecast-day">
-              <h3>{date}</h3>
-              <div>{(dailyData[0].weather[0].main=== 'Clouds'||dailyData[0].weather[0].main=== 'Rain' )&& <img src={cloud} width={'60px'}/>}</div>
-              <div>{(dailyData[0].weather[0].main=== 'Clear'||dailyData[0].weather[0].main=== 'Sunny') && <img src={sunny} width={'60px'}/>}</div>
-              <div>{(dailyData[0].weather[0].main === "Mist") && <img src={mist} width={"60px"} />}</div>
-              <div>{dailyData[0].weather[0].main === "Haze" && <img src={fog} width={"60px"} />}</div>
-              <p>Temperature: {dailyTemp.toFixed(1)}°C</p>
-              <p>Feels Like: {dailyFeelsLike.toFixed(1)}°C</p>
+              <h5>{date}</h5>
+              <div>
+                {(dailyData[0].weather[0].main === "Clouds" ||
+                  dailyData[0].weather[0].main === "Rain") && (
+                  <img src={cloud} width={"60px"} />
+                )}
+              </div>
+              <div>
+                {(dailyData[0].weather[0].main === "Clear" ||
+                  dailyData[0].weather[0].main === "Sunny") && (
+                  <img src={sunny} width={"60px"} />
+                )}
+              </div>
+              <div>
+                {dailyData[0].weather[0].main === "Mist" && (
+                  <img src={mist} width={"60px"} />
+                )}
+              </div>
+              <div>
+                {dailyData[0].weather[0].main === "Haze" && (
+                  <img src={fog} width={"60px"} />
+                )}
+              </div>
+              <p> {dailyTemp.toFixed(1)}°C</p>
             </div>
           );
         })}

@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { getWeather, getWeatherForcast } from "../../api/url";
 import { Forecast } from "./Forcast";
-import { Search, ThermometerSunIcon, Wind, WindIcon} from 'lucide-react'
+import { Search, ThermometerSunIcon, Wind, WindIcon } from "lucide-react";
 import sunsetImage from "../assets/sunrise.png";
 import sunsetImage2 from "../assets/sunsets.png";
-import sunny from '../assets/sun.png'
-import mist from '../assets/mist.png'
-import cloud from '../assets/cloud.png'
-import drizzle from '../assets/drizzle.png'
-export const WeatherDisplay = () => {
+import sunny from "../assets/sun.png";
+import mist from "../assets/mist.png";
+import cloud from "../assets/cloud.png";
+import drizzle from "../assets/drizzle.png";
+export const WeatherDisplay = ({ theme }) => {
   const [input, setInput] = useState("");
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState(null);
@@ -61,8 +61,12 @@ export const WeatherDisplay = () => {
             required
             className="inputBox"
           />
-          <button type="submit" className="buttonSearch">
-            <Search absoluteStrokeWidth width={"20px"} /> Search
+          <button
+            type="submit"
+            className="buttonSearch"
+            style={{ backgroundColor: theme ? "#191e34" : "#95a0a6" }}
+          >
+            <Search absoluteStrokeWidth />
           </button>
         </form>
       </div>
@@ -74,32 +78,34 @@ export const WeatherDisplay = () => {
                 {weatherData.name || "City not found"} {"  "}
                 {weatherData.sys?.country === "IN" && <span>India</span>}
               </h3>
-              {(weatherData.weather[0].main === "Sunny" || weatherData.weather[0].main === "Clear") && <img src={sunny} width={'60px'}/>}
-              {weatherData.weather[0].main === "Clouds" && <img src={cloud} width={'60px'} />}
-              {weatherData.weather[0].main === "Drizzle" && (
-                <img src={drizzle} width={'60px'}/>
-              )}
-              {(weatherData.weather[0].main === "Mist" ||
-                weatherData.weather[0].main === "Haze") && (
-                <img src={mist} width={"60px"} />
-              )}
-            </div>
-            <div style={{ lineHeight: "0px" }}>
-              <p>
-                {" "}
-                Sunrise :{" "}
-                {weatherData.sys?.sunrise &&
-                  formatTime(weatherData.sys.sunrise)}
-                &nbsp;
+              <div className="weatherICon">
+                {(weatherData.weather[0].main === "Sunny" ||
+                  weatherData.weather[0].main === "Clear") && (
+                  <img src={sunny} width={"60px"} />
+                )}
+                {weatherData.weather[0].main === "Clouds" && (
+                  <img src={cloud} width={"60px"} />
+                )}
+                {weatherData.weather[0].main === "Drizzle" && (
+                  <img src={drizzle} width={"60px"} />
+                )}
+                {(weatherData.weather[0].main === "Mist" ||
+                  weatherData.weather[0].main === "Haze") && (
+                  <img src={mist} width={"60px"} />
+                )}
+              </div>
+              <div className="sunrise_sunset">
+                <p>
+                  {weatherData.sys?.sunrise &&
+                    formatTime(weatherData.sys.sunrise)}
+                </p>
                 <img src={sunsetImage} width={"15%"} />
-              </p>
-              <p>
-                {" "}
-                Sunset :{" "}
-                {weatherData.sys?.sunset && formatTime(weatherData.sys.sunset)}
-                &nbsp;
+                <p>
+                  {weatherData.sys?.sunset &&
+                    formatTime(weatherData.sys.sunset)}
+                </p>
                 <img src={sunsetImage2} width={"15%"} />
-              </p>
+              </div>
             </div>
           </div>
           <div className="current-weather">
@@ -108,11 +114,11 @@ export const WeatherDisplay = () => {
               <p>Humidity : {weatherData.main.humidity}%</p>
               <p>Feels Like : {weatherData.main.feels_like}°C</p>
               <p>
-                <ThermometerSunIcon color="#fafafa" absoluteStrokeWidth /> :
+                <ThermometerSunIcon color="#fafafa" absoluteStrokeWidth />
                 {weatherData.main.temp}°C
               </p>
               <p>
-                <WindIcon color="#fafafa" absoluteStrokeWidth />:
+                <WindIcon color="#fafafa" absoluteStrokeWidth />
                 {weatherData.wind.speed} km/h
               </p>
             </div>

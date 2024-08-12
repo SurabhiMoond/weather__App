@@ -2,6 +2,9 @@ html, body {
   height: 100%;
   margin: 0;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  overflow-x: hidden; 
+  overflow-y: auto;
+  color: rgb(207, 225, 251);
 }
 
 .background {
@@ -13,7 +16,11 @@ html, body {
   z-index: -1;
   
 }
-
+.weatherDetail p{
+display: flex;
+align-items: center;
+gap: 8%;
+}
 .day {
 background: linear-gradient(to top, #171c32, #0e6695,#CCCCCC);
   
@@ -21,9 +28,13 @@ background: linear-gradient(to top, #171c32, #0e6695,#CCCCCC);
 .night {
 background-color: #171c32;
 }
+.sunrise_sunset{
+  line-height: 0ch;
+  
+}
 .weatherDisplayData{
   border-radius: 20px;
-  margin-top:3%;
+  margin-top:2%;
   padding: 20px;
   margin-left: 15%;
   width: 70%;
@@ -32,7 +43,7 @@ background-color: #171c32;
    box-shadow: rgb(10, 10, 218) 0px 50px 100px -20px, rgb(51, 255, 0) 0px 30px 60px -30px, rgba(3, 255, 112, 0.35) 0px -2px 6px 0px inset;
 }
 .weatherDetail{
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 .weather-display {
   position: relative; 
@@ -47,35 +58,38 @@ background-color: #171c32;
 
 .forecast {
   display: flex;
-  gap : 5px;
-  width: 100%;
+  gap: 5px;
   align-items: center;
   justify-content: center;
+  padding: 10px; 
 }
 
 .forecast-day {
   box-shadow: rgb(10, 10, 218) 0px 50px 100px -20px, rgb(51, 255, 0) 0px 30px 60px -30px, rgba(3, 255, 112, 0.35) 0px -2px 6px 0px inset;
-  margin: 10px 0;
-  padding: 10px;
+  margin: 10px;
+  padding: 20px;
   border-radius: 20px;
   text-align: center;
+  min-width: 40px;
+  flex-shrink: 0;
+  height: 150px;
+  max-width: 140px;
 }
-
-.forecast-day h3 {
+.forecast-day h5 {
   margin: 0;
 }
 .counteryName_timeIcon{
   width: 300px;
   border-radius: 20px;
-  height: 290px;
+  height: 288px;
 text-align: center;
  box-shadow: rgb(10, 10, 218) 0px 50px 100px -20px, rgb(51, 255, 0) 0px 30px 60px -30px, rgba(3, 255, 112, 0.35) 0px -2px 6px 0px inset;
-  font-size: 1.2rem;
-padding: 10px;
+  font-size: 1rem;
+padding: 8px 8px 30px 8px;
 
 }
 .current-weather{
-  height: 300px;
+  height: 312px;
   width: 400px;
   border-radius: 20px;
  box-shadow: rgb(10, 10, 218) 0px 50px 100px -20px, rgb(51, 255, 0) 0px 30px 60px -30px, rgba(3, 255, 112, 0.35) 0px -2px 6px 0px inset;
@@ -92,23 +106,22 @@ padding: 10px;
   background-color: rgb(232, 234, 235);
 }
 .buttonSearch{
-  border: 2px solid rgb(255, 252, 252);
-  background-color: #568aa6;
- margin-left: -115px;
+box-shadow: rgb(10, 10, 218) 0px 50px 100px -20px, rgb(51, 255, 0) 0px 30px 60px -30px, rgba(3, 255, 112, 0.35) 0px -2px 6px 0px inset;
+color: rgb(207, 225, 251);   
+ background-color: #568aa6;
+ margin-left: -50px;
  display: flex;
  align-items: center;
  gap: 3px;
  font-size: 18px;
- padding: 13px;
- padding-left: 15px;
- padding-right: 15px ;
+ padding: 10px;
  border-radius: 100px;
  border: none;
  cursor: pointer;
 }
 .buttonSearch:hover{
 background-color: rgb(217, 231, 240);
-color:rgb(3, 108, 173) ;
+color:rgb(43, 95, 117) ;
 }
 .formData{
   overflow:auto;
@@ -124,30 +137,164 @@ color:rgb(3, 108, 173) ;
   align-items: center;
   justify-content: center;
 }
-@media (max-width: 768px) {
-  .counteryName_timeIcon{
-    display: flex;
-    height: max-content;
-    width: 80%;
-  }
-  .weatherDisplayCards{
-    display: flex;
-    flex-direction: column;
-  }
-  .current-weather{
-  height: 300px;
-  width: 300px;
-  }
-  .forecast {
-  overflow:scroll;}
-  body{
+
+.themeBtn {
+  padding: 15px; 
+  margin-left: 17%;
+  margin-top:3%;
+}
+
+
+@media (max-width: 1440px) {
+  body {
+    width: 90%;
     overflow-x: hidden; 
   }
-  .background{
+  .forecast {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px; 
+}
+}
+
+
+@media (max-width: 1280px) {
+  body {
+    width: 90%;
+    overflow-x: hidden; 
+  }
+  .forecast {
+    flex-direction: row;
+    gap: 10px;
+    padding: 5px;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .forecast-day {
+    margin-left: 5px;
+    font-size: 14px;
+    width: 90px;
+    padding: 10px;
+  }
+  
+  body {
+    overflow-x: hidden; 
+  }
+
+  .background {
     margin-top: 0;
     position: relative;
   }
-  .inputBox{
+}
+@media (max-width: 768px) {
+  .counteryName_timeIcon {
+    max-height: 250px;
+    width: 80%;
+  }
+.weatherDetail{
+  font-size: 0.8rem;
+   padding: 10px;
+   height: auto;
+}
+  .weatherDisplayCards {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .current-weather {
+    width: 100%;
+  }
+
+  body {
+    overflow-x: hidden; 
+  }
+
+  .background {
+    margin-top: 0;
+    position: relative;
+  }
+
+  .inputBox {
     width: 200px;
+    font-size: 16px;
+  }
+
+.themeBtn {
+    position: absolute;
+    padding: 10px;
+    margin-left: 20%;
+    margin-top: 4%;
+  }
+    .forecast {
+    flex-direction: row;
+    gap: 10px;
+    padding: 5px;
+    overflow-x:auto ;
+    overflow-y: hidden;
+  }
+}
+
+@media (max-width: 480px) {
+  .forecast {
+    flex-direction: row;
+    gap: 10px;
+    padding: 5px;
+    overflow-y: hidden;
+  }
+
+  .forecast-day {
+    margin-left: 5px;
+    font-size: 14px;
+    width: 90px;
+    padding: 10px;
+  }
+
+  .themeBtn {
+    position: absolute;
+    padding: 10px;
+    margin-left: 18%;
+    margin-top: 5.6%;
+  }
+
+  .inputBox {
+    width: 150px;
+    padding: 7px;
+    font-size: 16px;
+  }
+
+  .current-weather {
+    padding: 10px;
+    width: 70%;
+    height: max-content;
+  }
+
+  .counteryName_timeIcon {
+    height: auto;
+    font-size: 0.8rem;
+    padding: 10px;
+    width: 70%;
+  }
+
+  .buttonSearch {
+    padding: 3px;
+    margin-left: -35px;
+  }
+
+  .weatherDisplayCards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .background {
+    margin-top: 0;
+    position: relative;
   }
 }
