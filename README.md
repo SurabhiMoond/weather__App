@@ -34,8 +34,14 @@ Check out the live version here: [Weather App](https://weather-app-kbw1.vercel.a
   ```bash
   npm start
   ```
-![image](https://github.com/user-attachments/assets/d73df5cf-107a-425c-8975-53832d2426d2)
-![image](https://github.com/user-attachments/assets/d84a4827-3280-41a2-967a-cf3a9da9f4ab)
+### Screenshots
+<div align="center" style="display: flex; justify-content: center; gap: 10px; ">
+  <img src="https://github.com/user-attachments/assets/d73df5cf-107a-425c-8975-53832d2426d2" alt="Desktop View" width="35%" />
+  <img src="https://github.com/user-attachments/assets/d84a4827-3280-41a2-967a-cf3a9da9f4ab" alt="Desktop View" width="35%"  />
+  <img src="https://github.com/user-attachments/assets/13ba0508-c4e8-4af2-a4fb-7ba05961950c" alt="Mobile View" width="25%" height="350px" />
+</div>
+
+
 
 
 
